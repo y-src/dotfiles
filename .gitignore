@@ -1,6 +1,5 @@
-# iterm2
-.config/iterm2
+.config/
 
-# fish
-.config/fish/fish_history
-.config/fish/fish_variables
+# include: fish config
+!.config/fish/config.fish
+!.config/fish/config-macOS.fish

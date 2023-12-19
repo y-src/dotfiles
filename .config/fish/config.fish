@@ -1,13 +1,21 @@
 # remove the fish welcome message
-set fish_greeting ""
+function fish_greeting
+end
 
-# add homebrew to $PATH
-fish_add_path /opt/homebrew/bin
-fish_add_path /opt/homebrew/sbin
+# remove fish mode prompt
+function fish_mode_prompt
+end
+
+# emulate vim bindings and cursor
+fish_vi_key_bindings
+set fish_cursor_default block
+set fish_cursor_insert line
+set fish_cursor_replace_one underscore
 
 # aliases
 alias lla "ll -A"
 alias g git
+alias vi nvim
 
 if status is-interactive
 	# Commands to run in interactive sessions can go here
@@ -17,3 +25,4 @@ switch (uname)
 	case Darwin
 		source (dirname (status --current-filename))/config-macOS.fish
 end
+
