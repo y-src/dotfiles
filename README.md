@@ -5,7 +5,7 @@ Cross-platform dotfiles.
 ## Prerequisites
 Install GNU Stow:
 ```bash
-sudo apt stow  # Ubuntu
+sudo apt install stow  # Ubuntu
 brew install stow  # Homebrew
 ```
 
