@@ -1,5 +1,0 @@
-.config/
-
-# include: fish config
-!.config/fish/config.fish
-!.config/fish/config-macOS.fish

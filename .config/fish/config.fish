@@ -17,6 +17,11 @@ alias lla "ll -A"
 alias g git
 alias vi nvim
 
+# convenience command to get to projects folder
+if test -e "$HOME/projects"
+	alias cdp "cd $HOME/projects"
+end
+
 if status is-interactive
 	# Commands to run in interactive sessions can go here
 end
@@ -24,5 +29,7 @@ end
 switch (uname)
 	case Darwin
 		source (dirname (status --current-filename))/config-macOS.fish
+#	case Linux
+#		source (dirname (status --current-filename))/config-linux.fish
 end
 

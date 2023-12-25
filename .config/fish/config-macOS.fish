@@ -6,12 +6,12 @@ if set -q TERM_PROGRAM
 	end
 end
 
-# convenience command to get to projects folder
-alias cdp "cd ~/projects"
-
 # add homebrew to $PATH
 fish_add_path /opt/homebrew/bin
 fish_add_path /opt/homebrew/sbin
+
+# add LLVM to $PATH
+fish_add_path /opt/homebrew/opt/llvm/bin
 
 # load private config file for macOS, if exists
 if test -e (dirname (status --current-filename))/config-macOS-private.fish
