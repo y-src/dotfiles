@@ -13,10 +13,12 @@ return {
     -- Extensions
     'mfussenegger/nvim-dap-python',
     'rcarriga/cmp-dap',
+    'theHamsta/nvim-dap-virtual-text',
   },
   config = function()
     local dap = require 'dap'
     local dapui = require 'dapui'
+    local dapvtext = require 'nvim-dap-virtual-text'
 
     -- Set lldb-vscode adapters
     -- NOTE: Ensure `llvm` is installed
@@ -61,6 +63,14 @@ return {
         'python',
       },
       handlers = {},
+    }
+
+    dapvtext.setup {
+      enabled = true,
+      highlight_changed_variables = true,
+      show_stop_reason = true,
+      virt_text_pos = 'eol',
+      virt_text_win_col = 80,
     }
 
     -- Basic debugging keymaps, feel free to change to your liking!
