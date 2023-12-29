@@ -231,6 +231,14 @@ require('lazy').setup({
   },
 
   {
+    "danymat/neogen",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    opts = {
+      snippet_engine = 'luasnip',
+    },
+  },
+
+  {
     -- Add all plugins in `plugins` folder
     -- Use `config` key for configuration
     import = 'plugins'
