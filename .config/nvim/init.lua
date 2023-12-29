@@ -226,6 +226,11 @@ require('lazy').setup({
   },
 
   {
+    'Civitasv/cmake-tools.nvim',
+    opts = {},
+  },
+
+  {
     -- Add all plugins in `plugins` folder
     -- Use `config` key for configuration
     import = 'plugins'
@@ -377,7 +382,7 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 -- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
+    ensure_installed = { 'c', 'cpp', 'cmake', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
     auto_install = false,
     highlight = { enable = true },
     indent = { enable = true },
@@ -505,6 +510,7 @@ require('mason-lspconfig').setup()
 -- Values are passed to `settings` field of the server config.
 local servers = {
   clangd = {},
+  cmake = {},
   pyright = {},
   lua_ls = {
     Lua = {
