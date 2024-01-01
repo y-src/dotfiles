@@ -104,6 +104,7 @@ return {
     local debug_win = nil
     local debug_tab = nil
     local debug_tabnr = nil
+    local debug_toggle = false
 
     -- Open UI in new tab
     local function open_in_tab()
@@ -116,6 +117,7 @@ return {
       debug_tab = vim.api.nvim_win_get_tabpage(debug_win)
       debug_tabnr = vim.api.nvim_tabpage_get_number(debug_tab)
       dapui.open()
+      debug_toggle = true
     end
 
     -- Close tab after UI is closed
@@ -127,10 +129,18 @@ return {
       debug_win = nil
       debug_tab = nil
       debug_tabnr = nil
+      debug_toggle = false
     end
 
+    local function toggle_tab()
+      if debug_toggle then
+        close_tab()
+      else
+        open_in_tab()
+      end
+    end
     -- Toggle UI
-    vim.keymap.set('n', '<F7>', dapui.toggle, { desc = 'Debug: See last session result.' })
+    vim.keymap.set('n', '<F7>', toggle_tab, { desc = 'Debug: See last session result.' })
 
     -- Attach UI to dap events
     dap.listeners.after.event_initialized['dapui_config'] = function()
