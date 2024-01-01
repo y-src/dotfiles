@@ -29,6 +29,9 @@ require('lazy').setup({
   -- Tabstop and shiftwidth detection
   'tpope/vim-sleuth',
 
+  -- "cs" to change parentheses, brackets, quotes, XML tags, etc.
+  'tpope/vim-surround',
+
   {
     -- Icons for other plugins, like nvim-tree
     -- NOTE: requires a patched font
@@ -222,6 +225,7 @@ require('lazy').setup({
         enable = true,
         update_root = true,
       },
+      filters = { custom = { "^.git$" }, },
     }
   },
 
