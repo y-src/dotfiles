@@ -243,6 +243,19 @@ require('lazy').setup({
   },
 
   {
+    "Fildo7525/pretty_hover",
+    event = "LspAttach",
+    opts = {}
+  },
+
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+  },
+
+  {
     -- Add all plugins in `plugins` folder
     -- Use `config` key for configuration
     import = 'plugins'
@@ -480,7 +493,7 @@ local on_attach = function(_, bufnr)
   nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
   -- Hovers documentation above/below the cursor
-  nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+  nmap('K', require("pretty_hover").hover, 'Hover Documentation')
   nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Workspace actions
