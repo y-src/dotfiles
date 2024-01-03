@@ -268,6 +268,13 @@ require('lazy').setup({
   },
 
   {
+    "kdheepak/lazygit.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
+
+  {
     -- Add all plugins in `plugins` folder
     -- Use `config` key for configuration
     import = 'plugins'

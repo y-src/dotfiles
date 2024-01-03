@@ -15,6 +15,7 @@ set fish_cursor_replace_one underscore
 # aliases
 alias lla "ll -A"
 alias g git
+alias lg lazygit
 alias cd.dotf "cd $HOME/dotfiles"
 alias cd.conf "cd $HOME/.config"
 alias cd.proj "cd $HOME/projects"

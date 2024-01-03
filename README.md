@@ -167,4 +167,12 @@ scoop bucket add nerd-fonts
 scoop install JetbrainsMono-NF
 ```
 
+### `lazygit` integration
+
+Using Hombrew:
+```bash
+brew install lazygit
+```
+
+
 <a href="#top">Back to top ⏎</a>
