@@ -256,6 +256,18 @@ require('lazy').setup({
   },
 
   {
+    'linux-cultist/venv-selector.nvim',
+    dependencies = { 'neovim/nvim-lspconfig', 'nvim-telescope/telescope.nvim', 'mfussenegger/nvim-dap-python' },
+    opts = {},
+    keys = {
+      -- keymap to open venvselector to pick a venv.
+      { '<leader>vs', '<cmd>venvselect<cr>' },
+      -- keymap to retrieve the venv from a cache (the one previously used for the same project directory).
+      { '<leader>vc', '<cmd>venvselectcached<cr>' },
+    },
+  },
+
+  {
     -- Add all plugins in `plugins` folder
     -- Use `config` key for configuration
     import = 'plugins'
@@ -322,6 +334,19 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
   group = highlight_group,
   pattern = '*',
+})
+
+-- [[ load venv ]]
+vim.api.nvim_create_autocmd('vimenter', {
+  desc = 'auto select virtualenv nvim open',
+  pattern = '*',
+  callback = function()
+    local venv = vim.fn.findfile('pyproject.toml', vim.fn.getcwd() .. ';')
+    if venv ~= '' then
+      require('venv-selector').retrieve_from_cache()
+    end
+  end,
+  once = true,
 })
 
 -- [[ Configure Telescope ]]
@@ -407,7 +432,7 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 -- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
-    ensure_installed = { 'c', 'cpp', 'cmake', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
+    ensure_installed = { 'c', 'cpp', 'cmake', 'fish', 'lua', 'python', 'gitignore', 'vimdoc', 'vim', 'bash', 'markdown', 'doxygen', },
     auto_install = false,
     highlight = { enable = true },
     indent = { enable = true },

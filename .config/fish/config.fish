@@ -15,11 +15,14 @@ set fish_cursor_replace_one underscore
 # aliases
 alias lla "ll -A"
 alias g git
+alias cd.dotf "cd $HOME/dotfiles"
+alias cd.conf "cd $HOME/.config"
+alias cd.proj "cd $HOME/projects"
 alias vi nvim
 
-# convenience command to get to projects folder
-if test -e "$HOME/projects"
-	alias cdp "cd $HOME/projects"
+# set default version of node
+if type -q nvm
+	nvm use lts &> /dev/null
 end
 
 if status is-interactive

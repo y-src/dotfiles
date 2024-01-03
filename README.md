@@ -24,8 +24,8 @@ sudo apt install stow
 ```
 
 To establish symbolic links:
-- run `stow .` in the `dotfiles` directory if located in `$XDG_CONFIG_HOME`.
-- or run `stow -d /path/to/dotfiles -t $XDG_CONFIG_HOME` from anywhere.
+- run `stow .` in the `dotfiles` directory if located in `$HOME`.
+- or run `stow -d /path/to/dotfiles -t $HOME` from anywhere.
 
 ### `nvim` - for Neovim
 
@@ -46,6 +46,24 @@ sudo apt install neovim
 Instructions to install `fish` are [here](https://fishshell.com/). 
 
 ## Python config <a name="Python-config" />
+
+### `python3.x` installation
+
+Installing python 3.8 using APT:
+
+```bash
+sudo apt update
+sudo apt install software-properties-common
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt-get install python3.8 python3.8-dev python3.8-distutils python3.8-venv
+```
+
+### `fd` for `venv-selector`
+`fd` is a dependency for the `venv-selector` neovim plugin 
+(I have it configured to automatically load a virtual environment present in `venv` directory when you enter a project)
+```bash
+sudo apt install fd-find
+```
 
 ### `pip`
 
