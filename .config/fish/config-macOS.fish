@@ -6,6 +6,8 @@ if set -q TERM_PROGRAM
 	end
 end
 
+set -x MANPAGER "nvim +Man!"
+
 # add homebrew to $PATH
 fish_add_path /opt/homebrew/bin
 fish_add_path /opt/homebrew/sbin

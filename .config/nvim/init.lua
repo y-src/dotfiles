@@ -160,6 +160,12 @@ require('lazy').setup({
     'navarasu/onedark.nvim',
     priority = 1000,
     config = function()
+      require('onedark').setup {
+        transparent = true,    -- Show/hide background
+        lualine = {
+          transparent = false, -- lualine center bar transparency
+        },
+      }
       vim.cmd.colorscheme 'onedark'
     end,
   },
@@ -217,15 +223,19 @@ require('lazy').setup({
   },
 
   {
-    -- Add directory tree to side-bar
-    'nvim-tree/nvim-tree.lua',
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    },
     opts = {
-      sync_root_with_cwd = true,
-      update_focused_file = {
-        enable = true,
-        update_root = true,
+      window = {
+        mappings = {
+          ["P"] = { "toggle_preview", config = { use_float = false, use_image_nvim = false } },
+        }
       },
-      filters = { custom = { "^.git$" }, },
     }
   },
 
@@ -331,6 +341,11 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous dia
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+-- Use cppman to search for test under the cursor
+vim.api.nvim_set_keymap("n", "<leader>k",
+  ":new cppman: <C-r><C-w> | .!cppman <C-r><C-w><cr> :setlocal bufhidden=wipe buftype=nofile noswapfile nobuflisted <cr>",
+  { desc = 'Run cppman on current word', silent = true, noremap = true })
 
 -- [[ Highlight on yank ]]
 
