@@ -1,0 +1,8 @@
+dotfiles
+========
+
+Run the following commands to get set up:
+  cd $HOME
+  git clone https://github.com/y-src/dotfiles.git
+  cd dotfiles
+  stow .
